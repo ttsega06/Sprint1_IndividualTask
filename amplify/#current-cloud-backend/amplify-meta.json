@@ -1,0 +1,100 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-autonomousgardenmoni-dev-182318-authRole",
+      "UnauthRoleArn": "arn:aws:iam::379632037565:role/amplify-autonomousgardenmoni-dev-182318-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::379632037565:role/amplify-autonomousgardenmoni-dev-182318-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-autonomousgardenmoni-dev-182318-deployment",
+      "UnauthRoleName": "amplify-autonomousgardenmoni-dev-182318-unauthRole",
+      "StackName": "amplify-autonomousgardenmoni-dev-182318",
+      "StackId": "arn:aws:cloudformation:us-west-2:379632037565:stack/amplify-autonomousgardenmoni-dev-182318/94d56b50-8fc4-11ed-a474-06e68cc3195d",
+      "AmplifyAppId": "d2rfu2pxr1jj86"
+    }
+  },
+  "storage": {
+    "dynamo89ef77d7": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-autonomousgardenmoni-dev-182318-deployment/amplify-cfn-templates/storage/dynamo89ef77d7-cloudformation-template.json",
+        "logicalId": "storagedynamo89ef77d7"
+      },
+      "lastPushTimeStamp": "2023-01-11T01:53:18.206Z",
+      "output": {
+        "PartitionKeyName": "UserId",
+        "Region": "us-west-2",
+        "Arn": "arn:aws:dynamodb:us-west-2:379632037565:table/dynamo89ef77d7-dev",
+        "StreamArn": "arn:aws:dynamodb:us-west-2:379632037565:table/dynamo89ef77d7-dev/stream/2023-01-09T03:14:02.461",
+        "PartitionKeyType": "S",
+        "Name": "dynamo89ef77d7-dev"
+      },
+      "lastPushDirHash": "Af4RrFY5irv+8KACarSvrHsdxJ4="
+    }
+  },
+  "function": {
+    "autonomousgardenmonic7ce712d": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "dynamo89ef77d7",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ],
+      "lastBuildTimeStamp": "2023-01-11T01:52:09.692Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-01-11T01:52:12.912Z",
+      "distZipFilename": "autonomousgardenmonic7ce712d-4d73484163327561424d-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-autonomousgardenmoni-dev-182318-deployment",
+        "s3Key": "amplify-builds/autonomousgardenmonic7ce712d-4d73484163327561424d-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-autonomousgardenmoni-dev-182318-deployment/amplify-cfn-templates/function/autonomousgardenmonic7ce712d-cloudformation-template.json",
+        "logicalId": "functionautonomousgardenmonic7ce712d"
+      },
+      "lastPushTimeStamp": "2023-01-11T01:53:18.377Z",
+      "output": {
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:379632037565:function:autonomousgardenmonic7ce712d-dev",
+        "Name": "autonomousgardenmonic7ce712d-dev",
+        "LambdaExecutionRole": "autonomousgardenmoniLambdaRole4a025561-dev"
+      },
+      "lastPushDirHash": "Xh5hc4wsQDHfookhAqTrUOi45Dk="
+    }
+  },
+  "api": {
+    "api48db2fc9": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "autonomousgardenmonic7ce712d",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-autonomousgardenmoni-dev-182318-deployment/amplify-cfn-templates/api/api48db2fc9-cloudformation-template.json",
+        "logicalId": "apiapi48db2fc9"
+      },
+      "lastPushTimeStamp": "2023-01-11T01:53:18.209Z",
+      "output": {
+        "ApiName": "api48db2fc9",
+        "RootUrl": "https://qyv6v2cspb.execute-api.us-west-2.amazonaws.com/dev",
+        "ApiId": "qyv6v2cspb"
+      },
+      "lastPushDirHash": "zIl+7JObS/RLM8AWkfNMiZRdUgs="
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/Notification": {
+      "name": "/Notification",
+      "lambdaFunction": "autonomousgardenmonic7ce712d",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
